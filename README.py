@@ -196,6 +196,22 @@ with tabs[0]:
         # Mostrar en pantalla
         st.dataframe(pd.DataFrame(resultados.items(), columns=["Parámetro", "Valor"]))
 
+        # Función para limpiar caracteres no compatibles con PDF
+def limpiar_pdf_texto(texto):
+    reemplazos = {
+        "₀": "0", "₁": "1", "₂": "2", "₃": "3", "₄": "4",
+        "₅": "5", "₆": "6", "₇": "7", "₈": "8", "₉": "9",
+        "⁰": "0", "¹": "1", "²": "2", "³": "3",
+        "°": " grados ", "º": "", "“": '"', "”": '"',
+        "‘": "'", "’": "'", "–": "-", "—": "-", "•": "-",
+        "→": "->", "←": "<-", "⇒": "=>", "≠": "!=", "≥": ">=", "≤": "<=",
+        "✓": "OK", "✅": "OK", "❌": "NO"
+    }
+    for k, v in reemplazos.items():
+        texto = texto.replace(k, v)
+    return texto
+
+
         # Exportar limpio al PDF
         exportar_pdf(
             f"GasNatural_{operador}_{datetime.now().strftime('%Y%m%d_%H%M')}.pdf",
