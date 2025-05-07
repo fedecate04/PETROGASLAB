@@ -173,8 +173,6 @@ with tabs[0]:
     - CO₂ ≤ 2.0 %
     """)
     
-    st.markdown("Evaluación de gases ácidos H2S y CO2 para control de corrosión y cumplimiento normativo.")
-    
     h2s = st.number_input("H₂S (ppm)", 0.0, step=0.1, key="h2s_gas")
     co2 = st.number_input("CO₂ (%)", 0.0, step=0.1, key="co2_gas")
     operador = st.text_input("👤 Operador", key="op_gas")
