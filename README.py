@@ -176,10 +176,10 @@ tabs = st.tabs([
     "Aminas"
 ])
 
-# 🔥 GAS NATURAL
+# GAS NATURAL – con limpieza de caracteres
 with tabs[0]:
     st.subheader("🔥 Análisis de Gas Natural")
-    st.markdown("Evaluación de gases ácidos H₂S y CO₂ para control de corrosión y cumplimiento normativo.")
+    st.markdown("Evaluación de gases ácidos H2S y CO2 para control de corrosión y cumplimiento normativo.")
     st.latex("H_2S \\leq 2.1\\ ppm \\quad\\quad CO_2 \\leq 2\\ \\%")
 
     h2s = st.number_input("H₂S (ppm)", 0.0, step=0.1, key="h2s_gas")
@@ -189,16 +189,20 @@ with tabs[0]:
 
     if st.button("📊 Analizar Gas"):
         resultados = {
-            "H₂S (ppm)": f"{h2s} - {'✅' if h2s <= 2.1 else '❌'}",
-            "CO₂ (%)": f"{co2} - {'✅' if co2 <= 2 else '❌'}"
+            "H2S (ppm)": f"{h2s} - {'OK' if h2s <= 2.1 else 'NO'}",
+            "CO2 (%)": f"{co2} - {'OK' if co2 <= 2 else 'NO'}"
         }
+
+        # Mostrar en pantalla
         st.dataframe(pd.DataFrame(resultados.items(), columns=["Parámetro", "Valor"]))
+
+        # Exportar limpio al PDF
         exportar_pdf(
             f"GasNatural_{operador}_{datetime.now().strftime('%Y%m%d_%H%M')}.pdf",
-            operador,
-            "Evaluación de H₂S y CO₂ en gas tratado.",
-            resultados,
-            obs
+            limpiar_pdf_texto(operador),
+            limpiar_pdf_texto("Evaluación de H2S y CO2 en gas tratado."),
+            {k: limpiar_pdf_texto(v) for k, v in resultados.items()},
+            limpiar_pdf_texto(obs)
         )
 
 # ⛽ GASOLINA ESTABILIZADA
