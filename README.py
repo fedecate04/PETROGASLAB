@@ -174,7 +174,6 @@ with tabs[0]:
     """)
     st.latex("H_2S \\leq 2.1\\ ppm \\quad\\quad CO_2 \\leq 2\\ \\%")
 
-with tabs[0]:
     st.subheader("🔥 Análisis de Gas Natural")
     st.markdown("Evaluación de gases ácidos H2S y CO2 para control de corrosión y cumplimiento normativo.")
     st.latex("H_2S \\leq 2.1\\ ppm \\quad\\quad CO_2 \\leq 2\\ \\%")
@@ -210,8 +209,7 @@ with tabs[1]:
     - Sales ≤ 100 mg/m²  
     - Agua y sedimentos ≤ 1 %
     """)
-
-with tabs[1]:
+    
     st.subheader("⛽ Análisis de Gasolina Estabilizada")
     st.markdown("Validación de parámetros críticos para evitar corrosión y sobrepresión.")
 
@@ -246,7 +244,6 @@ with tabs[2]:
     - Cloruros ≤ 50 ppm
     """)
 
-with tabs[2]:
     st.subheader("🧪 Análisis de MEG")
     st.markdown("Análisis del inhibidor de formación de hidratos en el sistema. Control de corrosión y salinidad.")
 
@@ -282,7 +279,6 @@ with tabs[3]:
     - Cloruros ≤ 50 ppm
     """)
 
-with tabs[3]:
     st.subheader("🧪 Análisis de TEG")
     st.markdown("Control del glicol utilizado para deshidratación de gas natural.")
 
@@ -315,7 +311,6 @@ with tabs[4]:
     - Cloruros ≤ 10 ppm
     """)
 
-with tabs[4]:
     st.subheader("💧 Análisis de Agua Desmineralizada")
     st.markdown("Evaluación del agua utilizada en calderas o procesos sensibles. Cloruros bajos son esenciales para evitar corrosión.")
 
@@ -349,7 +344,6 @@ with tabs[5]:
     - Carga ácida amina rica ≤ 0.45 mol/mol
     """)
 
-with tabs[5]:
     st.subheader("☠️ Análisis de Aminas")
     st.markdown("Evaluación del solvente amínico para remoción de gases ácidos como CO₂ y H₂S. Control clave en unidades de endulzamiento.")
 
