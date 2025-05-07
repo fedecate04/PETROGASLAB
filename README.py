@@ -35,7 +35,25 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # LOGO CENTRADO
-st.markdown("<div style='text-align:center;'><img src='logopetrogas.png' width='200'/></div>", unsafe_allow_html=True)
+from pathlib import Path
+import base64
+
+# Cargar imagen como base64
+def mostrar_logo(path="logopetrogas.png", ancho=200):
+    if Path(path).exists():
+        with open(path, "rb") as f:
+            data = base64.b64encode(f.read()).decode("utf-8")
+            st.markdown(
+                f"<div style='text-align:center;'><img src='data:image/png;base64,{data}' width='{ancho}'/></div>",
+                unsafe_allow_html=True
+            )
+    else:
+        st.warning("⚠️ No se encontró el logo 'logopetrogas.png'")
+
+# Mostrar logo centrado
+mostrar_logo()
+st.markdown("<h2 style='text-align:center;'>🧪 LTS Lab Analyzer</h2>", unsafe_allow_html=True)
+
 st.markdown("<h2 style='text-align:center;'>🧪 LTS Lab Analyzer</h2>", unsafe_allow_html=True)
 st.markdown("Aplicación profesional y pedagógica para análisis de laboratorio en plantas LTS.", unsafe_allow_html=True)
 
