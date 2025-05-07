@@ -97,15 +97,15 @@ class PDF(FPDF):
             self.multi_cell(0, 8, str(content))
         self.ln(2)
 
- def exportar_pdf(nombre, operador, explicacion, resultados, observaciones):
-    pdf = PDF()
-    pdf.add_page()
-    pdf.add_section("Operador", limpiar_pdf_texto(operador))
-    pdf.add_section("Explicación técnica", limpiar_pdf_texto(explicacion))
-    pdf.add_section("Resultados", {k: limpiar_pdf_texto(str(v)) for k, v in resultados.items()})
-    pdf.add_section("Observaciones", limpiar_pdf_texto(observaciones or "Sin observaciones."))
-    output = pdf.output(dest='S').encode('latin-1', errors='ignore')
-    st.download_button("⬇️ Descargar informe PDF", data=BytesIO(output), file_name=nombre, mime="application/pdf")
+    def exportar_pdf(nombre, operador, explicacion, resultados, observaciones):
+       pdf = PDF()
+       pdf.add_page()
+       pdf.add_section("Operador", limpiar_pdf_texto(operador))
+       pdf.add_section("Explicación técnica", limpiar_pdf_texto(explicacion))
+       pdf.add_section("Resultados", {k: limpiar_pdf_texto(str(v)) for k, v in resultados.items()})
+       pdf.add_section("Observaciones", limpiar_pdf_texto(observaciones or "Sin observaciones."))
+       output = pdf.output(dest='S').encode('latin-1', errors='ignore')
+       st.download_button("⬇️ Descargar informe PDF", data=BytesIO(output), file_name=nombre, mime="application/pdf")
 
 # 🧾 BIENVENIDA PROFESIONAL - LTS Lab Analyzer
 
