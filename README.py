@@ -163,7 +163,7 @@ tabs = st.tabs([
     "Aminas"
 ])
 
-# GAS NATURAL – con limpieza de caracteres
+# GAS NATURAL – con limpieza de caracteres y exportación PDF
 with tabs[0]:
     st.subheader("🔥 Análisis de Gas Natural")
     st.markdown("Evaluación de gases ácidos H2S y CO2 para control de corrosión y cumplimiento normativo.")
@@ -180,31 +180,13 @@ with tabs[0]:
             "CO2 (%)": f"{co2} - {'OK' if co2 <= 2 else 'NO'}"
         }
 
-        # Mostrar en pantalla
         st.dataframe(pd.DataFrame(resultados.items(), columns=["Parámetro", "Valor"]))
 
-        # Función para limpiar caracteres no compatibles con PDF
-def limpiar_pdf_texto(texto):
-    reemplazos = {
-        "₀": "0", "₁": "1", "₂": "2", "₃": "3", "₄": "4",
-        "₅": "5", "₆": "6", "₇": "7", "₈": "8", "₉": "9",
-        "⁰": "0", "¹": "1", "²": "2", "³": "3",
-        "°": " grados ", "º": "", "“": '"', "”": '"',
-        "‘": "'", "’": "'", "–": "-", "—": "-", "•": "-",
-        "→": "->", "←": "<-", "⇒": "=>", "≠": "!=", "≥": ">=", "≤": "<=",
-        "✓": "OK", "✅": "OK", "❌": "NO"
-    }
-    for k, v in reemplazos.items():
-        texto = texto.replace(k, v)
-    return texto
-
-        # Exportar limpio al PDF
-
- exportar_pdf(
+        exportar_pdf(
             f"GasNatural_{operador}_{datetime.now().strftime('%Y%m%d_%H%M')}.pdf",
             limpiar_pdf_texto(operador),
             limpiar_pdf_texto("Evaluación de H2S y CO2 en gas tratado."),
-            {k: limpiar_pdf_texto(v) for k, v in resultados.items()},
+            {k: limpiar_pdf_texto(str(v)) for k, v in resultados.items()},
             limpiar_pdf_texto(obs)
         )
 
