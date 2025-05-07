@@ -166,6 +166,16 @@ tabs = st.tabs([
 # GAS NATURAL – con limpieza de caracteres y exportación PDF
 with tabs[0]:
     st.subheader("🔥 Análisis de Gas Natural")
+    st.markdown("Evaluación de gases ácidos H₂S y CO₂ para control de corrosión y cumplimiento normativo.")
+    st.markdown("""
+    **📌 Rangos esperados:**
+    - H₂S ≤ 2.1 ppm  
+    - CO₂ ≤ 2.0 %
+    """)
+    st.latex("H_2S \\leq 2.1\\ ppm \\quad\\quad CO_2 \\leq 2\\ \\%")
+
+with tabs[0]:
+    st.subheader("🔥 Análisis de Gas Natural")
     st.markdown("Evaluación de gases ácidos H2S y CO2 para control de corrosión y cumplimiento normativo.")
     st.latex("H_2S \\leq 2.1\\ ppm \\quad\\quad CO_2 \\leq 2\\ \\%")
 
@@ -194,6 +204,16 @@ with tabs[0]:
 with tabs[1]:
     st.subheader("⛽ Análisis de Gasolina Estabilizada")
     st.markdown("Validación de parámetros críticos para evitar corrosión y sobrepresión.")
+    st.markdown("""
+    **📌 Rangos esperados:**
+    - TVR ≤ 12 psia  
+    - Sales ≤ 100 mg/m²  
+    - Agua y sedimentos ≤ 1 %
+    """)
+
+with tabs[1]:
+    st.subheader("⛽ Análisis de Gasolina Estabilizada")
+    st.markdown("Validación de parámetros críticos para evitar corrosión y sobrepresión.")
 
     tvr = st.number_input("TVR (psia)", 0.0, step=0.1, key="tvr_gasolina")
     sales = st.number_input("Sales (mg/m²)", 0.0, step=0.1, key="sales_gasolina")
@@ -216,6 +236,16 @@ with tabs[1]:
             obs
         )
 # 🧪 MEG
+with tabs[2]:
+    st.subheader("🧪 Análisis de MEG")
+    st.markdown("Análisis del inhibidor de formación de hidratos en el sistema. Control de corrosión y salinidad.")
+    st.markdown("""
+    **📌 Rangos esperados:**
+    - pH entre 6.5 y 8  
+    - Concentración entre 60 y 84 %  
+    - Cloruros ≤ 50 ppm
+    """)
+
 with tabs[2]:
     st.subheader("🧪 Análisis de MEG")
     st.markdown("Análisis del inhibidor de formación de hidratos en el sistema. Control de corrosión y salinidad.")
@@ -245,6 +275,16 @@ with tabs[2]:
 with tabs[3]:
     st.subheader("🧪 Análisis de TEG")
     st.markdown("Control del glicol utilizado para deshidratación de gas natural.")
+    st.markdown("""
+    **📌 Rangos esperados:**
+    - pH entre 6.5 y 8.5  
+    - Concentración ≥ 99 %  
+    - Cloruros ≤ 50 ppm
+    """)
+
+with tabs[3]:
+    st.subheader("🧪 Análisis de TEG")
+    st.markdown("Control del glicol utilizado para deshidratación de gas natural.")
 
     ph_teg = st.number_input("pH", 0.0, 14.0, step=0.01, key="ph_teg")
     conc_teg = st.number_input("Concentración (%wt)", 0.0, 100.0, step=0.1, key="conc_teg")
@@ -270,6 +310,14 @@ with tabs[3]:
 with tabs[4]:
     st.subheader("💧 Análisis de Agua Desmineralizada")
     st.markdown("Evaluación del agua utilizada en calderas o procesos sensibles. Cloruros bajos son esenciales para evitar corrosión.")
+    st.markdown("""
+    **📌 Rango esperado:**
+    - Cloruros ≤ 10 ppm
+    """)
+
+with tabs[4]:
+    st.subheader("💧 Análisis de Agua Desmineralizada")
+    st.markdown("Evaluación del agua utilizada en calderas o procesos sensibles. Cloruros bajos son esenciales para evitar corrosión.")
 
     cl_agua = st.number_input("Cloruros (ppm)", 0.0, step=0.1, key="cl_agua")
     operador = st.text_input("👤 Operador", key="op_agua")
@@ -289,6 +337,18 @@ with tabs[4]:
         )
 
 # ☠️ AMINAS
+with tabs[5]:
+    st.subheader("☠️ Análisis de Aminas")
+    st.markdown("Evaluación del solvente amínico para remoción de gases ácidos como CO₂ y H₂S. Control clave en unidades de endulzamiento.")
+    st.markdown("""
+    **📌 Rangos esperados:**
+    - Concentración entre 48 y 52 %  
+    - Cloruros en amina ≤ 1000 ppm  
+    - Cloruros en caldera ≤ 10 ppm  
+    - Carga ácida amina pobre ≤ 0.025 mol/mol  
+    - Carga ácida amina rica ≤ 0.45 mol/mol
+    """)
+
 with tabs[5]:
     st.subheader("☠️ Análisis de Aminas")
     st.markdown("Evaluación del solvente amínico para remoción de gases ácidos como CO₂ y H₂S. Control clave en unidades de endulzamiento.")
