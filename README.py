@@ -211,9 +211,9 @@ def limpiar_pdf_texto(texto):
         texto = texto.replace(k, v)
     return texto
 
-
         # Exportar limpio al PDF
-        exportar_pdf(
+
+ exportar_pdf(
             f"GasNatural_{operador}_{datetime.now().strftime('%Y%m%d_%H%M')}.pdf",
             limpiar_pdf_texto(operador),
             limpiar_pdf_texto("Evaluación de H2S y CO2 en gas tratado."),
