@@ -174,7 +174,6 @@ with tabs[0]:
     """)
     st.latex("H_2S \\leq 2.1\\ ppm \\quad\\quad CO_2 \\leq 2\\ \\%")
 
-    st.subheader("🔥 Análisis de Gas Natural")
     st.markdown("Evaluación de gases ácidos H2S y CO2 para control de corrosión y cumplimiento normativo.")
     st.latex("H_2S \\leq 2.1\\ ppm \\quad\\quad CO_2 \\leq 2\\ \\%")
 
@@ -210,9 +209,6 @@ with tabs[1]:
     - Agua y sedimentos ≤ 1 %
     """)
     
-    st.subheader("⛽ Análisis de Gasolina Estabilizada")
-    st.markdown("Validación de parámetros críticos para evitar corrosión y sobrepresión.")
-
     tvr = st.number_input("TVR (psia)", 0.0, step=0.1, key="tvr_gasolina")
     sales = st.number_input("Sales (mg/m²)", 0.0, step=0.1, key="sales_gasolina")
     agua = st.number_input("Agua y sedimentos (%)", 0.0, step=0.1, key="agua_gasolina")
@@ -243,9 +239,6 @@ with tabs[2]:
     - Concentración entre 60 y 84 %  
     - Cloruros ≤ 50 ppm
     """)
-
-    st.subheader("🧪 Análisis de MEG")
-    st.markdown("Análisis del inhibidor de formación de hidratos en el sistema. Control de corrosión y salinidad.")
 
     ph_meg = st.number_input("pH", 0.0, 14.0, step=0.01, key="ph_meg")
     conc_meg = st.number_input("Concentración (%wt)", 0.0, 100.0, step=0.1, key="conc_meg")
@@ -278,10 +271,7 @@ with tabs[3]:
     - Concentración ≥ 99 %  
     - Cloruros ≤ 50 ppm
     """)
-
-    st.subheader("🧪 Análisis de TEG")
-    st.markdown("Control del glicol utilizado para deshidratación de gas natural.")
-
+    
     ph_teg = st.number_input("pH", 0.0, 14.0, step=0.01, key="ph_teg")
     conc_teg = st.number_input("Concentración (%wt)", 0.0, 100.0, step=0.1, key="conc_teg")
     cl_teg = st.number_input("Cloruros (ppm)", 0.0, step=0.1, key="cl_teg")
@@ -310,9 +300,6 @@ with tabs[4]:
     **📌 Rango esperado:**
     - Cloruros ≤ 10 ppm
     """)
-
-    st.subheader("💧 Análisis de Agua Desmineralizada")
-    st.markdown("Evaluación del agua utilizada en calderas o procesos sensibles. Cloruros bajos son esenciales para evitar corrosión.")
 
     cl_agua = st.number_input("Cloruros (ppm)", 0.0, step=0.1, key="cl_agua")
     operador = st.text_input("👤 Operador", key="op_agua")
@@ -343,10 +330,7 @@ with tabs[5]:
     - Carga ácida amina pobre ≤ 0.025 mol/mol  
     - Carga ácida amina rica ≤ 0.45 mol/mol
     """)
-
-    st.subheader("☠️ Análisis de Aminas")
-    st.markdown("Evaluación del solvente amínico para remoción de gases ácidos como CO₂ y H₂S. Control clave en unidades de endulzamiento.")
-
+    
     conc_aminas = st.number_input("Concentración (%wt)", 0.0, 100.0, step=0.1, key="conc_aminas")
     cl_aminas = st.number_input("Cloruros en amina (ppm)", 0.0, step=1.0, key="cl_aminas")
     cl_caldera = st.number_input("Cloruros en caldera (ppm)", 0.0, step=0.1, key="cl_caldera")
