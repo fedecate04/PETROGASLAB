@@ -97,7 +97,7 @@ class PDF(FPDF):
             self.multi_cell(0, 8, str(content))
         self.ln(2)
 
-def exportar_pdf(nombre, operador, explicacion, resultados, observaciones):
+ def exportar_pdf(nombre, operador, explicacion, resultados, observaciones):
     pdf = PDF()
     pdf.add_page()
     pdf.add_section("Operador", limpiar_pdf_texto(operador))
