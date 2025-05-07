@@ -1,10 +1,23 @@
-# LTS LAB ANALYZER - VERSIÓN PROFESIONAL PEDAGÓGICA
 import streamlit as st
 import pandas as pd
 from fpdf import FPDF
 from datetime import datetime
 from io import BytesIO
 import os
+
+def limpiar_pdf_texto(texto):
+    reemplazos = {
+        "₀": "0", "₁": "1", "₂": "2", "₃": "3", "₄": "4",
+        "₅": "5", "₆": "6", "₇": "7", "₈": "8", "₉": "9",
+        "⁰": "0", "¹": "1", "²": "2", "³": "3",
+        "°": " grados ", "º": "", "“": '"', "”": '"',
+        "‘": "'", "’": "'", "–": "-", "—": "-", "•": "-",
+        "→": "->", "←": "<-", "⇒": "=>", "≠": "!=", "≥": ">=", "≤": "<=",
+        "✓": "OK", "✅": "OK", "❌": "NO"
+    }
+    for k, v in reemplazos.items():
+        texto = texto.replace(k, v)
+    return texto
 
 # CONFIGURACIÓN GENERAL
 st.set_page_config(page_title="LTS Lab Analyzer", layout="wide")
@@ -87,12 +100,13 @@ class PDF(FPDF):
 def exportar_pdf(nombre, operador, explicacion, resultados, observaciones):
     pdf = PDF()
     pdf.add_page()
-    pdf.add_section("Operador", operador)
-    pdf.add_section("Explicación técnica", explicacion)
-    pdf.add_section("Resultados", resultados)
-    pdf.add_section("Observaciones", observaciones or "Sin observaciones.")
+    pdf.add_section("Operador", limpiar_pdf_texto(operador))
+    pdf.add_section("Explicación técnica", limpiar_pdf_texto(explicacion))
+    pdf.add_section("Resultados", {k: limpiar_pdf_texto(str(v)) for k, v in resultados.items()})
+    pdf.add_section("Observaciones", limpiar_pdf_texto(observaciones or "Sin observaciones."))
     output = pdf.output(dest='S').encode('latin-1', errors='ignore')
     st.download_button("⬇️ Descargar informe PDF", data=BytesIO(output), file_name=nombre, mime="application/pdf")
+
 # 🧾 BIENVENIDA PROFESIONAL - LTS Lab Analyzer
 
 st.markdown("---")
